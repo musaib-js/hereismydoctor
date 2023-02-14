@@ -1,0 +1,111 @@
+{% extends 'base.html' %}
+{% block title %}{% endblock title %}
+{% block body %}
+<div class="container py-5">
+    <div class="row g-5">
+        <div class="col-lg-8">
+            <div class="mb-5">
+                <h1 class="mb-4">{{hospital.name}}</h1>
+                <h2> Details </h2>
+                <p>
+                    State: {{hospital.state}}<br>
+                    District: {{hospital.district}}<br>
+                    Location: {{hospital.location}}<br>
+                    Type: {{hospital.type}}
+                    No. of Doctors: {{hospital.total_doctors}}<br>
+                    No. of Paramedics: {{hospital.total_paramedocs}}<br>
+                    No. of Beds: {{hospital.total_beds}}<br>
+                    No. of Departments: {{hospital.total_departments}}<br>
+                </p>
+            </div>
+        </div>
+        <!-- Sidebar Start -->
+        <div class="col-lg-4">
+            <!-- Category Start -->
+            <div class="mb-5">
+                <h4 class="d-inline-block text-primary text-uppercase border-bottom border-5 mb-4">Departments</h4>
+                <div class="d-flex flex-column justify-content-start">
+                {% for x in departments %}
+                    <a class="h5 bg-light rounded py-2 px-3 mb-2" href="#"><i class="fa fa-angle-right me-2"></i>{{x}}</a>
+                    {% endfor %}
+                </div>
+            </div>
+            <!-- Category End -->
+        </div>
+        <!-- Sidebar End -->
+    </div>
+    <table class="table table-bordered table-dark" style = " display: block; overflow: auto;">
+        <thead>
+          <tr>
+            <th scope="col">Doctor Name</th>
+            <th scope="col">Department</th>
+            <th scope="col">Qualification</th>
+            <th scope="col">Duty Hours </th>
+            <th scope="col">OPD Hours</th>
+            <th scope="col">Room Number</th>
+          </tr>
+        </thead>
+        <tbody>
+            {% for x in doctors %}
+          <tr>
+            <td>{{x.name}}</td>
+            <td>{{x.department}}</td>
+            <td>{{x.qualification}}</td>
+            <td>{{x.duty_time}}</td>
+            <td>{{x.OPD_time}}</td>
+            <td>{{x.room_number}}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+
+        <!-- Appointment Start -->
+    <div class="container-fluid py-5">
+        <div class="container">
+            <div class="row gx-5">
+                <div class="col-lg-6 mb-5 mb-lg-0">
+                    <div class="mb-4">
+                        <h5 class="d-inline-block text-primary text-uppercase border-bottom border-5">Add a Doctor</h5>
+                        <h1 class="display-4">Add a doctor here</h1>
+                    </div>
+                    <p class="mb-5">Eirmod sed tempor lorem ut dolores. Aliquyam sit sadipscing kasd ipsum. Dolor ea et dolore et at sea ea at dolor, justo ipsum duo rebum sea invidunt voluptua. Eos vero eos vero ea et dolore eirmod et. Dolores diam duo invidunt lorem. Elitr ut dolores magna sit. Sea dolore sanctus sed et. Takimata takimata sanctus sed.</p>
+                    <a class="btn btn-primary rounded-pill py-3 px-5 me-3" href="">Change schedule</a>
+                    <a class="btn btn-outline-primary rounded-pill py-3 px-5" href="">View Profile</a>
+                </div>
+                <div class="col-lg-6">
+                    <div class="bg-light text-center rounded p-5">
+                        <h1 class="mb-4">Add a Doctor</h1>
+                        <form method = "POST" action = "/medicare/add-doctor/">
+                            {% csrf_token %}
+                            <div class="row g-3">
+                                <div class="col-12 col-sm-6">
+                                    <input type="text" class="form-control bg-white border-0" name = "name" placeholder="Name" style="height: 55px;">
+                                </div>
+                                <div class="col-12 col-sm-6">
+                                    <input type="text" class="form-control bg-white border-0" name = "qualification" placeholder="Qualification" style="height: 55px;">
+                                </div>
+                                <div class="col-12 col-sm-6">
+                                    <input type="text" class="form-control bg-white border-0" name = "department" placeholder="Department" style="height: 55px;">
+                                </div>
+                                <div class="col-12 col-sm-6">
+                                    <input type="text" class="form-control bg-white border-0" name = "duty_time" placeholder="Duty Hours" style="height: 55px;">
+                                </div>
+                                <div class="col-12 col-sm-6">
+                                    <input type="text" class="form-control bg-white border-0" name = "opd_time" placeholder="OPD Hours" style="height: 55px;">
+                                </div>
+                                <div class="col-12 col-sm-6">
+                                    <input type="text" class="form-control bg-white border-0" name = "room_num" placeholder="Room Number" style="height: 55px;">
+                                </div>
+                                <div class="col-12">
+                                    <button class="btn btn-primary w-100 py-3" type="submit">Add Doctor</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Appointment End -->
+</div>
+{% endblock body %}

@@ -1,0 +1,1 @@
+web: gunicorn hereismydoctor.wsgi --log-file -

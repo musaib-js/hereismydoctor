@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+{% block title %}{% endblock title %}
+{% block body %}
+  <div class="container py-5">
+    <div class="row g-5">
+        <div class="col-lg-8">
+            <div class="mb-5">
+                <img class="img-fluid w-100 rounded mb-5" src="/static/img/blog-2.jpg" alt="">
+                <h1 class="mb-4">{{hospital.name}}</h1>
+                <h2> Details </h2>
+                <p>
+                    State: {{hospital.state}}<br>
+                    District: {{hospital.district}}<br>
+                    Location: {{hospital.location}}<br>
+                    Type: {{hospital.type}}
+                    No. of Doctors: {{hospital.total_doctors}}<br>
+                    No. of Paramedics: {{hospital.total_paramedocs}}<br>
+                    No. of Beds: {{hospital.total_beds}}<br>
+                    No. of Departments: {{hospital.total_departments}}<br>
+                </p>
+            </div>
+        </div>
+
+        <!-- Sidebar Start -->
+        <div class="col-lg-4">
+            <!-- Search Form Start -->
+            <div class="mb-5">
+                <div class="input-group">
+                    <input type="text" class="form-control p-3" placeholder="Keyword">
+                    <button class="btn btn-primary px-3"><i class="fa fa-search"></i></button>
+                </div>
+            </div>
+            <!-- Search Form End -->
+
+            <!-- Category Start -->
+            <div class="mb-5">
+                <h4 class="d-inline-block text-primary text-uppercase border-bottom border-5 mb-4">Departments</h4>
+                <div class="d-flex flex-column justify-content-start">
+                {% for x in departments %}
+                    <a class="h5 bg-light rounded py-2 px-3 mb-2" href="#"><i class="fa fa-angle-right me-2"></i>{{x}}</a>
+                    {% endfor %}
+                </div>
+            </div>
+            <!-- Category End -->
+        </div>
+        <!-- Sidebar End -->
+    </div>
+    <table class="table table-bordered table-dark" style = " display: block; overflow: auto;">
+        <thead>
+          <tr>
+            <th scope="col">Doctor Name</th>
+            <th scope="col">Department</th>
+            <th scope="col">Qualification</th>
+            <th scope="col">Duty Hours </th>
+            <th scope="col">OPD Hours</th>
+            <th scope="col">Room Number</th>
+          </tr>
+        </thead>
+        <tbody>
+            {% for x in doctors %}
+          <tr>
+            <td>{{x.name}}</td>
+            <td>{{x.department}}</td>
+            <td>{{x.qualification}}</td>
+            <td>{{x.duty_time}}</td>
+            <td>{{x.OPD_time}}</td>
+            <td>{{x.room_number}}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+</div>
+{% endblock body %}

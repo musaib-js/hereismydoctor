@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% block title %}Create your Profile{% endblock title %}
+{% block body %}
+   <!-- Appointment Start -->
+   <div class="container-fluid py-5">
+    <div class="container">
+        <div class="row gx-5">
+            <div class="col-lg-6 mb-5 mb-lg-0">
+                <div class="mb-4">
+                    <h5 class="d-inline-block text-primary text-uppercase border-bottom border-5">Profile</h5>
+                    <h1 class="display-4">Create your Profile Here</h1>
+                </div>
+                <p class="mb-5">Eirmod sed tempor lorem ut dolores. Aliquyam sit sadipscing kasd ipsum. Dolor ea et dolore et at sea ea at dolor, justo ipsum duo rebum sea invidunt voluptua. Eos vero eos vero ea et dolore eirmod et. Dolores diam duo invidunt lorem. Elitr ut dolores magna sit. Sea dolore sanctus sed et. Takimata takimata sanctus sed.</p>
+                <a class="btn btn-primary rounded-pill py-3 px-5 me-3" href="">Find Doctor</a>
+                <a class="btn btn-outline-primary rounded-pill py-3 px-5" href="">Read More</a>
+            </div>
+            <div class="col-lg-6">
+                <div class="bg-light text-center rounded p-5">
+                    <h1 class="mb-4">Create your Profile</h1>
+                    <form method = "POST" action = "/medicare/create-patient-profile/">
+                        {% csrf_token %}
+                        <div class="row g-3">
+                            <div class="col-12 col-sm-6">
+                                <input name = "full_name" type="text" class="form-control bg-white border-0" placeholder="Your Name" style="height: 55px;">
+                            </div>
+                            <div class="col-12 col-sm-6">
+                                <select name = "gender" class="form-select bg-white border-0" style="height: 55px;">
+                                    <option selected>Gender</option>
+                                    <option value="Male">Male</option>
+                                    <option value="Female">Female</option>
+                                    <option value="Transgender">Transgender</option>
+                                </select>
+                            </div>
+                            <div class="col-12 col-sm-6">
+                                <input name = "age" type="text" class="form-control bg-white border-0" placeholder="Your Age" style="height: 55px;">
+                            </div>
+                            <div class="col-12 col-sm-6">
+                                <input name = "aadhar_number" type="number" class="form-control bg-white border-0" placeholder="Aadhar Number" style="height: 55px;">
+                            </div>
+                            <div class="col-12 col-sm-6">
+                                <input name = "address" type="text" class="form-control bg-white border-0" placeholder="Your Address" style="height: 55px;">
+                            </div> 
+                            <div class="col-12">
+                                <button class="btn btn-primary w-100 py-3" type="submit">Create</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Appointment End -->
+{% endblock body %}
