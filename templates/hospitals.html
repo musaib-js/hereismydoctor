@@ -7,18 +7,19 @@
         <div class="text-center mx-auto mb-5" style="max-width: 500px;">
             <h5 class="d-inline-block text-primary text-uppercase border-bottom border-5">Find Your Hospital</h5>
             <h1 class="display-4 mb-4">Type the name of the the hospital.</h1>
-            <h5 class="fw-normal">Duo ipsum erat stet dolor sea ut nonumy tempor. Tempor duo lorem eos sit sed ipsum takimata ipsum sit est. Ipsum ea voluptua ipsum sit justo</h5>
         </div>
         <div class="mx-auto" style="width: 100%; max-width: 600px;">
+            <form method = "get" action = "/medicare/search-hospital">
             <div class="input-group">
-                <input type="text" class="form-control border-primary w-50" placeholder="Keyword">
+                    {% csrf_token %}
+                <input name = "query" type="text" class="form-control border-primary w-50" placeholder="Keyword">
+                </form>
                 <button class="btn btn-dark border-0 w-25">Search</button>
             </div>
         </div>
     </div>
 </div>
 <!-- Search End -->
-
     <!-- Hospitals Start -->
     <div class="container-fluid py-5">
         <div class="container">
