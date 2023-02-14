@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% block title %}Search results for {{query}}{% endblock title %}
+{% block body %}
+<div class = "container my-4">
+<h2> Here are the search results for your query: {{query}}
+</div>
+    <!-- Team Start -->
+    <div class="container-fluid py-5">
+        <div class="container">
+            <div class="owl-carousel team-carousel position-relative">
+                {% for x in allDoctors %}
+                <div class="team-item">
+                    <div class="row g-0 bg-light rounded overflow-hidden">
+                        <div class="col-12 col-sm-5 h-100">
+                            <img class="img-fluid h-100" src="/static/img/team-1.jpg" style="object-fit: cover;">
+                        </div>
+                        <div class="col-12 col-sm-7 h-100 d-flex flex-column">
+                            <div class="mt-auto p-4">
+                                <h3>{{x.name}}</h3>
+                                <h6 class="fw-normal fst-italic text-primary mb-4">{{x.qualification}} || {{x.department}}</h6>
+                                <p class="m-0">{{x.hospital}}</p>
+                            </div>
+                            <div class="d-flex mt-auto border-top p-4">
+                                <button class="btn btn-primary w-100 py-3" type="submit">Make An Appointment</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    <!-- Team End -->
+{% endblock body %}

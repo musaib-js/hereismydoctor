@@ -5,6 +5,7 @@ from django.http import HttpResponse
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 
+
 # Create your views here.
 def PatientSignup(request):
     if request.method == "POST":
@@ -94,4 +95,30 @@ def addDoctor(request):
         newdoc.save()
         messages.success(request, "Doctor Added Successfully")
         return redirect('/medicare/hospital-home')
+
+def doctorSearch(request):
+    query=request.GET['query']
+    if len(query)>300:
+        allDoctors=Doctor.objects.none()
+    else:
+        allDoctorsName= Doctor.objects.filter(name__icontains=query)
+        allDoctors=  allDoctorsName
+        for a in allDoctors:
+            print(a.hospital)
+    if allDoctors.count()==0:
+        messages.warning(request, "No search results found. Please refine your query.")
+    context={'allDoctors': allDoctors, 'query': query}
+    return render(request, 'doctorsearch.html', context)
+
+def hospitalSearch(request):
+    query=request.GET['query']
+    if len(query)>300:
+        allHospitals=Hospital.objects.none()
+    else:
+        allHospitalsName= Hospital.objects.filter(name__icontains=query)
+        allHospitals=  allHospitalsName
+    if allHospitals.count()==0:
+        messages.warning(request, "No search results found. Please refine your query.")
+    context={'allHospitals': allHospitals, 'query': query}
+    return render(request, 'hospitalsearch.html', context)
     

@@ -10,7 +10,6 @@
                     <h1 class="display-1 text-white mb-md-4">Best Healthcare Solution In The Country</h1>
                     <div class="pt-2">
                         <a href="/medicare/login" class="btn btn-dark rounded-pill py-3 px-5 mx-2">Login</a>
-                        <a href="/medicare/patientsignup" class="btn btn-dark rounded-pill py-3 px-5 mx-2">Sign Up</a>
                     </div>
                 </div>
             </div>
@@ -26,6 +25,8 @@
                 <h5 class="text-white fw-normal">Duo ipsum erat stet dolor sea ut nonumy tempor. Tempor duo lorem eos sit sed ipsum takimata ipsum sit est. Ipsum ea voluptua ipsum sit justo</h5>
             </div>
             <div class="mx-auto" style="width: 100%; max-width: 600px;">
+                <form method == "get" action = "/medicare/search-doctor">
+                    {% csrf_token %}
                 <div class="input-group">
                     <select class="form-select border-primary w-25" style="height: 60px;">
                         <option selected>Department</option>
@@ -33,8 +34,9 @@
                         <option value="2">Department 2</option>
                         <option value="3">Department 3</option>
                     </select>
-                    <input type="text" class="form-control border-primary w-50" placeholder="Name of the Doctor">
+                    <input name = "query" type="text" class="form-control border-primary w-50" placeholder="Name of the Doctor">
                     <button class="btn btn-dark border-0 w-25">Search</button>
+                </form>
                 </div>
             </div>
         </div>

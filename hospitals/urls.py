@@ -11,4 +11,6 @@ urlpatterns = [
     path('hospitals/<int:pk>/', views.hospitaldetails, name = "hospitaldetails"),
     path('hospital-home/', views.hospitaldashboard, name = "hospitaldashboard"),
     path('add-doctor/', views.addDoctor, name = "addDoctor"),
+    path('search-doctor/', views.doctorSearch, name = "search-doctor"),
+    path('search-hospital/', views.hospitalSearch, name = "search-hospital"),
 ]
