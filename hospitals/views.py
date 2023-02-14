@@ -63,12 +63,21 @@ def hospitals(request):
 
 def hospitaldetails(request, pk):
     hospital = Hospital.objects.filter(pk = pk)[0]
-    doctors  = Doctor.objects.filter(hospital = pk)
+    doctors  = Doctor.objects.filter(hospital = hospital)
     print(doctors)
     ldeparments = hospital.departments
     departments = ldeparments.split(",")
     context = {'hospital':hospital, 'departments': departments, 'doctors': doctors}
     return render(request, 'hospitaldetail.html', context)
+
+def doctordetails(request, pk):
+    doctor = Doctor.objects.filter(pk = pk)[0]
+    newlist = list(doctor.hospital.values())
+    hospitals=[]
+    for i in newlist:
+        hospitals.append(i['name'])
+    context = {'doctor': doctor,'hospitals':hospitals}
+    return render(request, 'doctordetail.html', context)
 
 @login_required
 def hospitaldashboard(request):

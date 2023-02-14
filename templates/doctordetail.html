@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% block title %}{{doctor.name}} | Here's my Doctor{% endblock title %}
+{% block body %}
+   <!-- Blog Start -->
+   <div class="container py-5">
+    <div class="row g-5">
+        <div class="col-lg-8">
+            <!-- Blog Detail Start -->
+            <div class="mb-5">
+                <img class="img-fluid w-100 rounded mb-5" src="img/blog-2.jpg" alt="">
+                <h1 class="mb-4">{{doctor.name}}</h1>
+                <div class="mb-5">
+                    <h4 class="d-inline-block text-primary text-uppercase border-bottom border-5 mb-4">Details</h4>
+                    <div class="d-flex flex-column justify-content-start">
+                        <a class="h5 bg-light rounded py-2 px-3 mb-2"><i class="fa fa-angle-right me-2"></i>Department: {{doctor.department}}</a>
+                        <a class="h5 bg-light rounded py-2 px-3 mb-2"><i class="fa fa-angle-right me-2"></i>Qualification: {{doctor.qualification}}</a>
+                        <a class="h5 bg-light rounded py-2 px-3 mb-2"><i class="fa fa-angle-right me-2"></i>Duty Time: {{doctor.duty_time}}</a>
+                        <a class="h5 bg-light rounded py-2 px-3 mb-2"><i class="fa fa-angle-right me-2"></i>OPD Time: {{doctor.OPD_time}}</a>
+                        <a class="h5 bg-light rounded py-2 px-3 mb-2"><i class="fa fa-angle-right me-2"></i>Consultation Room: {{doctor.room_number}}</a>
+                    </div>
+                </div>
+            </div>
+            <!-- Blog Detail End -->
+            <!-- Comment Form Start -->
+            <div class="bg-light rounded p-5">
+                <h4 class="d-inline-block text-primary text-uppercase border-bottom border-5 border-white mb-4">Book an Appointment</h4>
+                <form>
+                    <div class="row g-3">
+                        <div class="col-12 col-sm-6">
+                            <input type="text" class="form-control bg-white border-0" placeholder="Your Name" style="height: 55px;">
+                        </div>
+                        <div class="col-12 col-sm-6">
+                            <input type="email" class="form-control bg-white border-0" placeholder="Your Email" style="height: 55px;">
+                        </div>
+                        <div class="col-12">
+                            <input type="text" class="form-control bg-white border-0" placeholder="Website" style="height: 55px;">
+                        </div>
+                        <div class="col-12">
+                            <textarea class="form-control bg-white border-0" rows="5" placeholder="Comment"></textarea>
+                        </div>
+                        <div class="col-12">
+                            <button class="btn btn-primary w-100 py-3" type="submit">Book Appointment</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <!-- Comment Form End -->
+        </div>
+    </div>
+</div>
+<!-- Blog End -->
+{% endblock body %}

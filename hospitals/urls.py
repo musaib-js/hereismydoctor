@@ -9,6 +9,7 @@ urlpatterns = [
     path('create-patient-profile/', views.createProfile, name = "Patient Profile"),
     path('hospitals/', views.hospitals, name = "hospitals"),
     path('hospitals/<int:pk>/', views.hospitaldetails, name = "hospitaldetails"),
+    path('doctors/<int:pk>/', views.doctordetails, name = "doctordetail"),
     path('hospital-home/', views.hospitaldashboard, name = "hospitaldashboard"),
     path('add-doctor/', views.addDoctor, name = "addDoctor"),
     path('search-doctor/', views.doctorSearch, name = "search-doctor"),

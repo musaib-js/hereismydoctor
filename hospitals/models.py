@@ -73,7 +73,7 @@ class Doctor(models.Model):
     name = models.CharField(max_length=150)
     qualification = models.CharField(max_length=150)
     department = models.CharField(max_length=150)
-    hospital = models.ManyToManyField(Hospital)
+    hospital = models.ManyToManyField(Hospital, related_name="hospital")
     duty_time = models.CharField(max_length=150)
     OPD_time = models.CharField(max_length=150)
     room_number = models.CharField(max_length=150)
@@ -92,4 +92,13 @@ class Patient(models.Model):
 
     def __str__(self):
         return self.name
+    
+class Appointment(models.Model):
+    patient = models.ForeignKey(User, on_delete=models.CASCADE)
+    doctor = models.ForeignKey(Doctor, on_delete=models.CASCADE)
+    date = models.DateField()
+    is_approved = models.BooleanField(default=False)
+
+    def __str__(self):
+        return self.patient
     
