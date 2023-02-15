@@ -8,16 +8,32 @@
                 <img class="img-fluid w-100 rounded mb-5" src="/static/img/blog-2.jpg" alt="">
                 <h1 class="mb-4">{{hospital.name}}</h1>
                 <h2> Details </h2>
-                <p>
-                    State: {{hospital.state}}<br>
-                    District: {{hospital.district}}<br>
-                    Location: {{hospital.location}}<br>
-                    Type: {{hospital.type}}
-                    No. of Doctors: {{hospital.total_doctors}}<br>
-                    No. of Paramedics: {{hospital.total_paramedocs}}<br>
-                    No. of Beds: {{hospital.total_beds}}<br>
-                    No. of Departments: {{hospital.total_departments}}<br>
-                </p>
+                <table class="table table-bordered table-dark" style = " display: block; overflow: auto;">
+                  <thead>
+                    <tr>
+                      <th scope="col">State</th>
+                      <th scope="col">District</th>
+                      <th scope="col">Location</th>
+                      <th scope="col">Type</th>
+                      <th scope="col">Total Doctors </th>
+                      <th scope="col">Total Paramedics</th>
+                      <th scope="col">Total Beds</th>
+                      <th scope="col">Total Departments</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>{{hospital.state}}</td>
+                      <td>{{hospital.district}}</td>
+                      <td>{{hospital.location}}</td>
+                      <td> {{hospital.type}}</td>
+                      <td>{{hospital.total_doctors}}</td>
+                      <td> {{hospital.total_paramedics}}</td>
+                      <td>{{hospital.total_beds}}</td>
+                      <td>{{hospital.total_departments}}</td>
+                    </tr>
+                  </tbody>
+                </table>
             </div>
         </div>
 
@@ -45,12 +61,14 @@
         </div>
         <!-- Sidebar End -->
     </div>
+    <h1> Duty Chart </h1>
     <table class="table table-bordered table-dark" style = " display: block; overflow: auto;">
         <thead>
           <tr>
             <th scope="col">Doctor Name</th>
             <th scope="col">Department</th>
             <th scope="col">Qualification</th>
+            <th scope="col">Duty Day</th>
             <th scope="col">Duty Hours </th>
             <th scope="col">OPD Hours</th>
             <th scope="col">Room Number</th>
@@ -62,6 +80,7 @@
             <td>{{x.name}}</td>
             <td>{{x.department}}</td>
             <td>{{x.qualification}}</td>
+            <td>{{x.duty_day}}</td>
             <td>{{x.duty_time}}</td>
             <td>{{x.OPD_time}}</td>
             <td>{{x.room_number}}</td>

@@ -150,7 +150,7 @@ def appointmentBooking(request):
 
 def appointments(request):
     hospital = Hospital.objects.get(user = request.user)
-    appointments = Appointment.objects.filter(hospital = hospital)
+    appointments = Appointment.objects.filter(hospital = hospital).order_by('date')
     print(appointments)
     context = {'appointments': appointments}
     return render(request, 'hospitalappointments.html', context)

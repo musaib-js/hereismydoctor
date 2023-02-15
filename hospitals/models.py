@@ -74,6 +74,7 @@ class Doctor(models.Model):
     qualification = models.CharField(max_length=150)
     department = models.CharField(max_length=150)
     hospital = models.ManyToManyField(Hospital, related_name="hospital")
+    duty_day = models.CharField(max_length=500, default = "Please enter the data here")
     duty_time = models.CharField(max_length=150)
     OPD_time = models.CharField(max_length=150)
     room_number = models.CharField(max_length=150)

@@ -18,7 +18,7 @@
                             <div class="mt-auto p-4">
                                 <h3>{{x.name}}</h3>
                                 <h6 class="fw-normal fst-italic text-primary mb-4">{{x.qualification}} || {{x.department}}</h6>
-                                <p class="m-0">{{x.hospital}}</p>
+                                {% comment %} <p class="m-0">{{x.hospital}}</p> {% endcomment %}
                             </div>
                             <div class="d-flex mt-auto border-top p-4">
                                 <a href = "/medicare/doctors/{{x.pk}}"><button class="btn btn-primary w-100 py-3" type="submit">Make An Appointment</button></a>
