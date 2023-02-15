@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .models import User, Hospital, Patient, Doctor
+from .models import User, Hospital, Patient, Doctor, Appointment
 from django.contrib import messages
 from django.http import HttpResponse
 from django.contrib.auth import authenticate, login, logout
@@ -130,4 +130,31 @@ def hospitalSearch(request):
         messages.warning(request, "No search results found. Please refine your query.")
     context={'allHospitals': allHospitals, 'query': query}
     return render(request, 'hospitalsearch.html', context)
-    
+
+@login_required    
+def appointmentBooking(request):
+    if request.user.is_authenticated:
+        if request.method == "POST":
+            date = request.POST['date']
+            doctor = request.POST.get('doctor')
+            hospital = request.POST['hospital']
+            hospital_instance = Hospital.objects.get(name = hospital)
+            doctor_instance = Doctor.objects.get(pk = doctor)
+            patient = Patient.objects.filter(user = request.user)[0]
+            newAppointment = Appointment(patient = patient, date = date, doctor = doctor_instance, hospital = hospital_instance)
+            newAppointment.save()
+            messages.success(request, "Appointment Booked Successfully. Kindly wait for confirmation")
+            return redirect('/')
+        else:
+            return redirect('/medicare/login')
+
+def appointments(request):
+    hospital = Hospital.objects.get(user = request.user)
+    appointments = Appointment.objects.filter(hospital = hospital)
+    print(appointments)
+    context = {'appointments': appointments}
+    return render(request, 'hospitalappointments.html', context)
+
+def handleLogout(request):
+    logout(request)
+    return redirect('/medicare/login')

@@ -91,14 +91,15 @@ class Patient(models.Model):
     aadhar_number = models.IntegerField()
 
     def __str__(self):
-        return self.name
+        return self.full_name
     
 class Appointment(models.Model):
-    patient = models.ForeignKey(User, on_delete=models.CASCADE)
+    patient = models.ForeignKey(Patient, on_delete=models.CASCADE)
     doctor = models.ForeignKey(Doctor, on_delete=models.CASCADE)
+    hospital = models.ForeignKey(Hospital, on_delete=models.CASCADE, blank=True, null=True)
     date = models.DateField()
     is_approved = models.BooleanField(default=False)
 
     def __str__(self):
-        return self.patient
+        return str(self.patient)
     

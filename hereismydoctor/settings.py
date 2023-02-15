@@ -107,7 +107,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 AUTH_USER_MODEL = 'hospitals.User'
 
-LOGIN_URL = 'login'
+LOGIN_URL = '/medicare/login'
 
 LOGOUT_URL = 'logout'
 
